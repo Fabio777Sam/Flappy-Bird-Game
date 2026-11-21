@@ -1,0 +1,444 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    overflow: hidden;
+}
+
+/* Fundo do jogo */
+.background {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    background: url("Imagens/background-img.png") no-repeat center center;
+    background-size: cover;
+    z-index: 0;
+}
+
+/* Pássaro */
+.bird {
+    position: fixed;
+    top: 40vh;
+    left: 30vw;
+    width: 130px;
+    height: 100px;
+    object-fit: contain;
+    z-index: 5;
+}
+
+/* Obstáculos */
+.pipe_sprite {
+    position: fixed;
+    top: 40vh;
+    left: 100vw;
+    width: 6vw;
+    height: 70vh;
+    background: radial-gradient(lightgreen 50%, green);
+    border: 5px solid black;
+    z-index: 2;
+}
+
+/* Cores dos obstáculos nos eventos */
+body.mode-star .pipe_sprite {
+    background: radial-gradient(#777 30%, #222);
+    border-color: #ddd;
+}
+
+body.mode-angry .pipe_sprite {
+    background: radial-gradient(#b8e986 30%, #4c9b35);
+    border-color: #315b22;
+}
+
+body.mode-america .pipe_sprite {
+    background: radial-gradient(#928e8e 30%, #494646);
+    border-color: #F4E8D8;
+}
+
+body.mode-russia .pipe_sprite {
+    background: radial-gradient(#415e1c 30%, #3c5d17);
+    border-color: #D8E6F3;
+}
+
+body.mode-dragonball .pipe_sprite {
+     background: radial-gradient(#E87826 30%, #B74719);
+    border-color: #FFD56A;
+}
+
+body.mode-cyber .pipe_sprite {
+    background: radial-gradient(#7629A8 30%, #43166C);
+    border-color: #E49AFF;
+}
+
+body.mode-airface .pipe_sprite {
+    background: radial-gradient(#1c3346 30%, #3335b6);
+    border-color: #B8D5E8;
+}
+
+
+
+/* Menus e ecrãs sobre o jogo */
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Caixa dos menus */
+.menu-box {
+    width: min(450px, 95%);
+    padding: 35px 25px;
+    text-align: center;
+    background: white;
+    border: 4px solid #333;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+.menu-box h1 {
+    margin-bottom: 15px;
+    font-size: 42px;
+    color: #f0a000;
+    text-shadow: 2px 2px #333;
+}
+
+.menu-box p {
+    margin-bottom: 25px;
+    font-size: 18px;
+    color: #444;
+}
+
+/* Botões */
+button {
+    display: block;
+    width: 100%;
+    margin: 12px auto;
+    padding: 14px 20px;
+    border: 3px solid #333;
+    border-radius: 12px;
+    background: #ffd447;
+    color: #222;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.15s, background 0.15s;
+}
+
+
+
+/* botao do perfil */
+.perfil-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: auto;
+    min-width: 100px;
+    margin: 0;
+    z-index: 25;
+}
+
+/* nome do jogador */
+#playerName label {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+}
+
+#playerMenu input {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+/* avatares do jogador */
+.avatar-opcoes{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 15px 0;
+}
+
+.avatar-option{
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cointain;
+    padding: 6px;
+    border: 3px solid #ccc;
+    border-radius: 12px;
+    background: #f2f2f2;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.avatar-option:hover{
+    border-color: #f0a000;
+    transform: scale(1.05);
+}
+
+#profileMenu .menu-box{
+   max-height: calc(100vh - 40px);
+   overflow-y: auto;
+}
+
+button:hover {
+    background: #ffb900;
+    transform: scale(1.04);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.secondary-button {
+    background: #ddd;
+}
+
+.secondary-button:hover {
+    background: #bbb;
+}
+
+/* Mensagens de jogo e Game Over */
+.message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 15;
+    width: min(450px, 90%);
+    padding: 25px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 24px;
+    color: black;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.message h2 {
+    margin-bottom: 12px;
+    color: #e53935;
+}
+
+.message p {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+/* Pontuação */
+.score {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    color: white;
+    font-size: 8vh;
+    font-weight: bold;
+    -webkit-text-stroke: 2px black;
+}
+
+.score_title{
+    display: none;
+}
+
+.score_val {
+    color: gold;
+}
+
+/* Ecrãs pequenos */
+@media (max-width: 700px) {
+    .bird {
+        width: 100px;
+        height: 80px;
+    }
+
+    .pipe_sprite {
+        width: 14vw;
+    }
+
+    .menu-box h1 {
+        font-size: 34px;
+    }
+
+    .score {
+        font-size: 6vh;
+    }
+
+    .message {
+        font-size: 20px;
+    }
+}
+
+.points-display{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: 2px solid gold;
+    border-radius: 12px;
+    font-size: 20px;
+    font-weight: bold;
+    z-index: 0;
+
+
+}
+
+
+/* Loja de skins */
+#shopMenu {
+    align-items: flex-start;
+    overflow-y: auto;
+}
+
+.shop-box {
+    width: min(900px, 95%);
+    max-height: none;
+    overflow: visible;
+    margin: auto;
+}
+
+/* Pontos disponíveis */
+.shop-points {
+    margin-bottom: 20px;
+    padding: 12px;
+    background-color: #222;
+    color: gold;
+    border: 2px solid gold;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Espaço das skins */
+.skins-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+/* Cartões das skins */
+.skin-card {
+    padding: 12px;
+    background: #f2f2f2;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    text-align: center;
+}
+
+/*efeito ao passar o mosue por cima dele*/
+.skin-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagens */
+.skin-card img {
+    width: 100%;
+    height: 110px;
+    object-fit: contain;
+}
+
+/* Nomes */
+.skin-card h3 {
+    margin: 8px 0;
+    font-size: 18px;
+}
+
+/* Raridades */
+.skin-card p {
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Botões */
+.skin-card button {
+    padding: 9px;
+    font-size: 15px;
+}
+
+/* cores das raridades */
+.skin-card.comum { border-color: #999; }
+.skin-card.comum h3 { color: #777; }
+
+.skin-card.rara { border-color: #2585df; }
+.skin-card.rara h3 { color: #2585df; }
+
+.skin-card.epica { border-color: #9932cc; }
+.skin-card.epica h3 { color: #9932cc; }
+
+.skin-card.mitica { border-color: #e68a00; }
+.skin-card.mitica h3 { color: #e68a00; }
+
+.skin-card.secreta {
+    border-color: #e0c000;
+    background: linear-gradient(145deg, #292929, #49402b);
+}
+
+.skin-card.secreta h3 { color: #ffd700; }
+.skin-card.secreta p { color: #fff; }
+
+/*  o mapa ao pe da skin */
+.skin-map{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 12px 0;
+    padding: 8px;
+    background-color: rgba(0, 0, 0, 0.88);
+    border-radius: 10px;
+}
+
+.skin-map img {
+    width: 65px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin: 0;
+}
+
+.skin-map p {
+    margin: 0;
+    font-size: 13px;
+}
+
+
+
+/* Ecrãs pequenos */
+@media (max-width: 700px) {
+    .skins-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+
+
+
+
+
+

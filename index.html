@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flappy Bird</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body class="mode-classic">
+
+    <div class="background"></div>
+    <img src="Imagens/Bird.png"alt="Pássaro" class="bird" id="bird-1">
+
+
+    <div class="overlay" id="mainMenu">
+        <button id="abrirPerfil" class="perfil-button">
+            Profile
+        </button>
+    <div class="points-display">
+        <span></span>
+        <span id="totalPoints">Points: 0</span>
+    </div>
+        <div class="menu-box">
+            <h1>Flappy Bird</h1>
+            <p>Escolhe como queres jogar!</p>
+
+            <button id="playClassic">Jogar</button>
+            <button id="openEvents">Eventos</button>
+            <button id="OpenShop">Loja de Skins</button>
+        </div>
+    </div>
+
+   
+<div class="overlay hidden" id="profileMenu">
+    <div class="menu-box">
+
+        <h1>Profile</h1>
+        <p>Cria o teu perfil de jogador!</p>
+        <label for="playerName">Nome do jogador:</label>
+        <input type="text" id="playerName"
+               placeholder="Escreve o teu nome"
+               maxlength="16" required>
+
+        <p>Escolhe o teu avatar:</p>
+        <div class="avatar-opcoes">
+            <img src="Imagens/Bird.png" alt="Avatar 1" class="avatar-option" data-avatar="Imagens/Bird.png">
+            <img src="airflane/airforce.png" alt="Avatar 2" class="avatar-option" data-avatar="airflane/airforce.png">
+            <img src="Angry/red.png" alt="Avatar 3" class="avatar-option" data-avatar="Angry/red.png">
+            <img src="anime/goku.png" alt="Avatar 4" class="avatar-option" data-avatar="anime/goku.png">
+            <img src="cyber/cyberbird.png" alt="Avatar 5" class="avatar-option" data-avatar="cyber/cyberbird.png">
+            <img src="rs/putin.png" alt="Avatar 6" class="avatar-option" data-avatar="rs/putin.png">
+            <img src="usa/donald.png" alt="Avatar 7" class="avatar-option" data-avatar="usa/donald.png">
+            <img src="Star/Darth.png" alt="Avatar 8" class="avatar-option" data-avatar="Star/Darth.png">
+        </div>
+        <button id="saveProfile">Guardar perfil</button>
+        <button id="backFromProfile" class="secondary-button">
+            Voltar
+        </button>
+    </div>
+</div>
+
+
+<div class="overlay hidden" id="eventsMenu">
+    <div class="menu-box">
+        <h1>Eventos</h1>
+        <p>Escolhe o teu evento favorito.</p>
+
+        <button id="playStar">Star Wars Edition</button>
+        <button id="playAngry">Angry Birds Edition</button>
+        <button id="playAirface">Airforce Edition</button>
+        <button id="playDragonball">Dragon Ball Z Edition</button>
+        <button id="playCyber">Cybernetic World Edition</button>
+        <button id="playRussia">Jurassic Edition</button>
+        <button id="playAmerica">Austronaut Edition</button>
+        <button id="backToMenu" class="secondary-button">
+            Voltar
+        </button>
+
+    </div>
+</div>
+
+<!--menu da loja-->
+<div class="overlay hidden" id="shopMenu">
+    <div class="menu-box shop-box">
+        <h1>Loja de Skins</h1>
+        <p>Escolhe a skin que quiseres!</p>
+
+        <div class="shop-points">
+            <span id="shopPoints">Pontos: 0</span>
+        </div>
+
+        <div class="skins-container" id="skinsContainer">
+        </div>
+
+        <button id="backFromShop" class="secondary-button">
+            Voltar
+        </button>
+    </div>
+</div>
+
+    <div class="message hidden" id="message"></div>
+    <div class="score hidden" id="score">
+        <span class="score_title"></span>
+        <span class="score_val">0</span>
+    </div>
+
+</body>
+</html>
